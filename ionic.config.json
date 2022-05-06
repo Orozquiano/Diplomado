@@ -1,0 +1,7 @@
+{
+  "name": "Componapps",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
