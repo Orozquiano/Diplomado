@@ -17,14 +17,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/informacion',
+        redirectTo: '/tabs/arma_tu_pc',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/informacion',
+    redirectTo: '/tabs/arma_tu_pc',
     pathMatch: 'full'
   }
 ];
