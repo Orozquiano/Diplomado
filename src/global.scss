@@ -30,8 +30,16 @@
     height: auto;
     margin-right: 20px;
 }
-ion-card{
-    ion-card-title{
-        margin-top: 10px;
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    ion-card{
+        padding-top: 10px;
+        ion-card-title{
+            margin-top: 10px;
+        }
     }
-}
+  }
+  

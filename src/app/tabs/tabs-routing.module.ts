@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../informacion_page/Informacion/tab1.module').then(m => m.Tab1PageModule)
       },
       {
+        path: 'resultado',
+        loadChildren: () => import('../resultado_page/resultado/tab3.module').then(m => m.Tab3PageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/arma_tu_pc',
         pathMatch: 'full'

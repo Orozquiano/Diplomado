@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-explore-container',
@@ -9,17 +8,8 @@ import { NavController } from '@ionic/angular';
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
-  /** 
-   * @constructor de la clase 
-   * */
-  constructor(
-    public navCtrl: NavController
-    ) { }
+  constructor() { }
 
   ngOnInit() {}
-
-  goToResultado(){
-    this.navCtrl.navigateForward('/tabs/resultado');
-  }
 
 }
