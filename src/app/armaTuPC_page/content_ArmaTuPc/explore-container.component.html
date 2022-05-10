@@ -76,6 +76,11 @@
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-card>
+  <ion-item *ngFor="let item of items">
+    <ion-label>
+      <h1>{{item.Name}}</h1>
+    </ion-label>
+  </ion-item>
   <ion-button (click)="goToResultado()">Buscar PC</ion-button>
   <br>
   <br>
