@@ -40,7 +40,23 @@
         ion-card-title{
             margin-top: 10px;
         }
-        .contenedor_img{}
+        .contenedor_SFT{
+            
+            .contenedor_img{
+                width: auto;
+                height: 120px;
+                display: flex;    
+                justify-content: center;
+                img{
+                    cursor: pointer;
+                }
+                img:hover{
+                    opacity: 0.5;
+                }
+            }
+
+            
+        }
     }
 }
   

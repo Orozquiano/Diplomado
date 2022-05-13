@@ -33,70 +33,20 @@
       <ion-infinite-scroll-content>
         <ion-card-content>
           <ion-row>
-            <ion-col>
-              <div>
+            <ion-col class="contenedor_SFT"  size="4" *ngFor="let software of software">
+              <div >
                 <div class="contenedor_img">
-                  <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
+                  <img class="item_select" src={{software.IMG}} alt=""><br>
                 </div>
-                <p>Nombre Software</p>
+                <p>{{software.Name}}</p>
               </div>
-              <!-- <div>
-                <div class="contenedor_img">
-                  <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                </div>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <div class="contenedor_img">
-                  <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                </div>
-                <p>Nombre Software</p>
-              </div> -->
-              
-            </ion-col>
-            <ion-col>
-              <div>
-                <div class="contenedor_img">
-                  <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                </div>
-                <p>Nombre Software</p>
-              </div>
-              <!-- <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div> -->
-            </ion-col>
-            <ion-col>
-              <div>
-                <div class="contenedor_img">
-                  <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                </div>
-                <p>Nombre Software</p>
-              </div>
-              <!-- <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p> -->
-              <!-- </div> -->
             </ion-col>
           </ion-row>
         </ion-card-content>
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-card>
-  <ion-item *ngFor="let item of items">
-    <ion-label>
-      <h1>{{item.COMIDA.Sushi}}</h1>
-      <img src={{item.IMG}} alt="">
-    </ion-label>
-  </ion-item>
+
   <ion-button (click)="goToResultado()">Buscar PC</ion-button>
   <br>
   <br>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Item } from 'src/app/models/interface';
+import { software } from 'src/app/models/interface';
 import { basedatosService } from 'src/app/service/basedatos.service';
 
 
@@ -12,7 +12,9 @@ import { basedatosService } from 'src/app/service/basedatos.service';
 export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
-  items: Item[]=[];
+  software: software[]=[];
+  IMG: string;
+  Name: string;
 
   /** 
    * @constructor de la clase 
@@ -42,11 +44,14 @@ export class ExploreContainerComponent implements OnInit {
    * @function getInfo Trae la infor la base de datos (PRUEBA)
    */
   getItems(){
-    const enlace = 'Case';
-    this.basedatosService.getInfo<Item>(enlace).subscribe(res =>{
+    const enlace = 'Software';
+    this.basedatosService.getInfo<software>(enlace).subscribe(res =>{
       console.log(res);
-      this.items = res; //this.items.push(res[0]);
-      console.log(this.items[0].Name);
+      this.software = res; //this.items.push(res[0]);
+      console.log(this.software[0].Name); 
+      this.IMG = this.software[0].IMG;
+      this.Name = this.software[0].Name;
+
     });
   }
 

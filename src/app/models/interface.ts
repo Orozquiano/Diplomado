@@ -1,6 +1,6 @@
-export interface Item {
+/*export interface Item {
     Name: String
-}
+}*/
 
 export interface Almacenamiento{
     Capacity: number,
@@ -87,7 +87,7 @@ export interface software{
         VRAM: number
     },
     IMG: string,
-    Name: String,
+    Name: string,
     RAM: number,
     Storage: {
         Capacity: number,
