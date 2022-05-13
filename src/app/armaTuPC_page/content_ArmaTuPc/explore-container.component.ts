@@ -23,6 +23,10 @@ export class ExploreContainerComponent implements OnInit {
     public basedatosService: basedatosService
     ) { }
 
+    /**
+     * @function ngOnInit Todo lo que se ponga dentro de esta funcion se cargara al iniciar la pagina.
+     */
+    
   ngOnInit() {
     this.getItems();
   }
@@ -38,10 +42,11 @@ export class ExploreContainerComponent implements OnInit {
    * @function getInfo Trae la infor la base de datos (PRUEBA)
    */
   getItems(){
-    const enlace = 'Procesador';
+    const enlace = 'Case';
     this.basedatosService.getInfo<Item>(enlace).subscribe(res =>{
       console.log(res);
-      this.items = res;
+      this.items = res; //this.items.push(res[0]);
+      console.log(this.items[0].Name);
     });
   }
 

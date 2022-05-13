@@ -21,27 +21,10 @@ export class basedatosService{
         public angularFirestore: AngularFirestore
     ){}
 
-    /**
-     * Metodos algo asi como un CRUD
-     */
-
-
-    /**
-     * @function createDocument
-     * @param data 
-     * @param enlace 
-     * @returns 
-     */
-    // createDocument<tipo>(data: tipo, enlace: string){
-    //     const itemsCollection: AngularFirestoreCollection<tipo> =
-    //                         this.angularFirestore.collection<tipo>(enlace);
-    //     return itemsCollection.add(data);                            
-    // }
-
 
     /**
      * @function getInfo Traera toda la información de la base de datos segun
-     * el enlace que se le pase Ejemplo: Procesador/CPU1 
+     * el enlace que se le pase Ejemplo: Procesador
      * Traera toda la info de CPU1
      * @param enlace ruta donde traera toda la infoermación
      * @returns todos lo valores de la BD segun el enlace
