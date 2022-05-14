@@ -1,7 +1,7 @@
 <div id="container">
   <ion-card>
     <ion-card-content>
-      Componapps es una plataforma web la cual te permitira escoger entre diferentes software que utilices en el
+      Componapps es una plataforma web la cual te permitira escoger entre diferentes software que utilices en el día a día como maximo 3 
     </ion-card-content>
   </ion-card>
   <ion-card>
@@ -10,17 +10,7 @@
       <ion-row>
         <ion-col>
           <div class="contenedor_img">
-            <img class="item_select_1" src="../../../assets/icon/componapps_icon.png" alt="">
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="contenedor_img">
-            <img class="item_select_2"src="../../../assets/icon/componapps_icon.png" alt="">
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="contenedor_img">
-            <img class="item_select_3" src="../../../assets/icon/componapps_icon.png" alt="">
+            <img class="item_select_1" src="../../../assets/icon/componapps_icon.png" alt="" (click)="TomarIMG()">
           </div>
         </ion-col>
       </ion-row>
@@ -29,22 +19,22 @@
   <ion-searchbar></ion-searchbar>
   <ion-card>
     <ion-card-title>Software</ion-card-title>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content>
-        <ion-card-content>
-          <ion-row>
-            <ion-col class="contenedor_SFT"  size="4" *ngFor="let software of software">
-              <div >
-                <div class="contenedor_img">
-                  <img class="item_select" src={{software.IMG}} alt=""><br>
-                </div>
-                <p>{{software.Name}}</p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    <!-- <ion-infinite-scroll >
+      <ion-infinite-scroll-content> -->
+    <ion-card-content>
+      <ion-row>
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of software">
+          <div>
+            <div class="contenedor_img">
+              <img class="item_select" src={{software.IMG}} alt=""><br>
+            </div>
+            <p>{{software.Name}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <!-- </ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
   </ion-card>
 
   <ion-button (click)="goToResultado()">Buscar PC</ion-button>

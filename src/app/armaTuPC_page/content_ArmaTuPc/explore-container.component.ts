@@ -55,4 +55,8 @@ export class ExploreContainerComponent implements OnInit {
     });
   }
 
+  TomarIMG(){
+    console.log("HOLA")
+  }
+
 }
