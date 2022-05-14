@@ -10,7 +10,7 @@
       <ion-row>
         <ion-col class="contenedor_SFT" size="4" *ngFor="let software_info of Info_Select_Soft" >
           <div class="contenedor_img">
-            <img class="item_select_1" src="{{software_info.IMG}}" alt="" (click)="RemoveS(software_info)">
+            <img class="item_select_1" src="{{software_info.IMG}}" alt="{{software_info.Name}}" (click)="RemoveS(software_info)">
           </div>
           <p>{{software_info.Name}}</p>
         </ion-col>

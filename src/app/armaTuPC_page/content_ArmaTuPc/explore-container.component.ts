@@ -81,8 +81,8 @@ export class ExploreContainerComponent implements OnInit {
    * @param software_info 
    */
   RemoveS(software_info){
-    let info = software_info.id;
-    this.Info_Select_Soft.splice(info,1);
+    // let info = software_info.id;
+    this.Info_Select_Soft.splice(this.Info_Select_Soft.indexOf(software_info),1);
   }
 
   buscar( event ){
