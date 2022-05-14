@@ -87,11 +87,17 @@ export class ExploreContainerComponent implements OnInit {
     this.Info_Select_Soft.splice(this.Info_Select_Soft.indexOf(software_info),1);
   }
 
+  /**
+  * @function buscarFunción que sirve para filtrar los software mediante la barra de búsqueda según un
+  * @param event
+  * digitado por teclado event.detail.value
+  */
   buscar(event){
-    // this.getItems();
     this.textoBuscar = event.detail.value.toLowerCase();
     console.log(this.textoBuscar);
     this.results = this.software.filter(sft => sft.Name.toLowerCase().includes(this.textoBuscar));
+    console.log(this.results);
+    
   }
 
 }
