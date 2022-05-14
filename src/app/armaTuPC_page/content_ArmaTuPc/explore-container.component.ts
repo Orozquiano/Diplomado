@@ -4,6 +4,7 @@ import { testUserAgent } from '@ionic/core/dist/types/utils/platform';
 import { element } from 'protractor';
 import { software } from 'src/app/models/interface';
 import { basedatosService } from 'src/app/service/basedatos.service';
+import { BusquedaService } from 'src/app/service/busqueda.service';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class ExploreContainerComponent implements OnInit {
    * */
   constructor(
     public navCtrl: NavController,
-    public basedatosService: basedatosService
+    public basedatosService: basedatosService,
+    public busquedaService: BusquedaService
     ) { }
 
     /**
@@ -41,8 +43,13 @@ export class ExploreContainerComponent implements OnInit {
   /**
    * @function goToResultado la cual nos permite cambiar a la page de resultado
    */
-  goToResultado(){
-    this.navCtrl.navigateForward('/tabs/resultado');
+  goToResultado(selected_Software: software[]){
+    if(selected_Software.length==0)
+      alert("No puedes armar un pc sin seleccionar al menos 1 software.");
+    else{
+      this.busquedaService.Seleccionar(selected_Software);
+      this.navCtrl.navigateForward('/tabs/resultado');
+    }
   }
 
   /**
@@ -94,10 +101,7 @@ export class ExploreContainerComponent implements OnInit {
   */
   buscar(event){
     this.textoBuscar = event.detail.value.toLowerCase();
-    console.log(this.textoBuscar);
     this.results = this.software.filter(sft => sft.Name.toLowerCase().includes(this.textoBuscar));
-    console.log(this.results);
-    
   }
 
 }
