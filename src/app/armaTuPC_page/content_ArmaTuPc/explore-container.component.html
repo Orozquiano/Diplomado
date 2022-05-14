@@ -8,15 +8,17 @@
     <ion-card-title>Software seleccionado</ion-card-title>
     <ion-card-content>
       <ion-row>
-        <ion-col>
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software_info of Info_Select_Soft" >
           <div class="contenedor_img">
-            <img class="item_select_1" src="../../../assets/icon/componapps_icon.png" alt="" (click)="TomarIMG()">
+            <img class="item_select_1" src="{{software_info.IMG}}" alt="" (click)="RemoveS(software_info)">
           </div>
+          <p>{{software_info.Name}}</p>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
   <ion-searchbar></ion-searchbar>
+  <ion-button (click)="goToResultado()">Buscar PC</ion-button>
   <ion-card>
     <ion-card-title>Software</ion-card-title>
     <!-- <ion-infinite-scroll >
@@ -26,7 +28,7 @@
         <ion-col class="contenedor_SFT" size="4" *ngFor="let software of software">
           <div>
             <div class="contenedor_img">
-              <img class="item_select" src={{software.IMG}} alt=""><br>
+              <img class="item_select" src={{software.IMG}} alt="" (click)="Info_Software(software)"><br>
             </div>
             <p>{{software.Name}}</p>
           </div>
@@ -37,7 +39,6 @@
     </ion-infinite-scroll> -->
   </ion-card>
 
-  <ion-button (click)="goToResultado()">Buscar PC</ion-button>
   <br>
   <br>
   <br>
