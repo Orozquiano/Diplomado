@@ -17,6 +17,7 @@ export class ExploreContainerComponent implements OnInit {
   IMG: string;
   Name: string;
   Info_Select_Soft: string[]=[];
+  textoBuscar = '';
 
   /** 
    * @constructor de la clase 
@@ -74,9 +75,19 @@ export class ExploreContainerComponent implements OnInit {
 
   }
 
+  /**
+   * @function RemoveS Función que sirve para remover el software que selecciones en la sección de software
+   * seleccionado
+   * @param software_info 
+   */
   RemoveS(software_info){
     let info = software_info.id;
     this.Info_Select_Soft.splice(info,1);
+  }
+
+  buscar( event ){
+    this.textoBuscar = event.detail.value;
+    console.log(this.textoBuscar);
   }
 
 }

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { PipesModule } from './pipes/pipes.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    PipesModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule
   ],  

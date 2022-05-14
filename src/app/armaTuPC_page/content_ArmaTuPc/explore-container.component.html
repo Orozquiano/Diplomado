@@ -17,7 +17,7 @@
       </ion-row>
     </ion-card-content>
   </ion-card>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar animated (ionChange)="buscar($event)"></ion-searchbar>
   <ion-button (click)="goToResultado()">Buscar PC</ion-button>
   <ion-card>
     <ion-card-title>Software</ion-card-title>
@@ -25,7 +25,8 @@
       <ion-infinite-scroll-content> -->
     <ion-card-content>
       <ion-row>
-        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of software">
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of software | filtro: textoBuscar">
+          <!-- | filtro: 'Name' -->
           <div>
             <div class="contenedor_img">
               <img class="item_select" src={{software.IMG}} alt="" (click)="Info_Software(software)"><br>
