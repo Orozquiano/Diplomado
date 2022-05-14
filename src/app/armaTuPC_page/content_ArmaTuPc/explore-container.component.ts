@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { testUserAgent } from '@ionic/core/dist/types/utils/platform';
 import { element } from 'protractor';
 import { software } from 'src/app/models/interface';
 import { basedatosService } from 'src/app/service/basedatos.service';
@@ -14,6 +15,7 @@ export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
   software: software[]=[];
+  results: software[]=[];
   IMG: string;
   Name: string;
   Info_Select_Soft: string[]=[];
@@ -53,7 +55,7 @@ export class ExploreContainerComponent implements OnInit {
       this.software = res;
       this.IMG = this.software[0].IMG;
       this.Name = this.software[0].Name;
-
+      this.results = res;
     });
   }
 
@@ -85,9 +87,11 @@ export class ExploreContainerComponent implements OnInit {
     this.Info_Select_Soft.splice(this.Info_Select_Soft.indexOf(software_info),1);
   }
 
-  buscar( event ){
-    this.textoBuscar = event.detail.value;
+  buscar(event){
+    // this.getItems();
+    this.textoBuscar = event.detail.value.toLowerCase();
     console.log(this.textoBuscar);
+    this.results = this.software.filter(sft => sft.Name.toLowerCase().includes(this.textoBuscar));
   }
 
 }

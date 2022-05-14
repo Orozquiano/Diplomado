@@ -25,13 +25,12 @@
       <ion-infinite-scroll-content> -->
     <ion-card-content>
       <ion-row>
-        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of software | filtro: textoBuscar">
-          <!-- | filtro: 'Name' -->
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let result of results">
           <div>
             <div class="contenedor_img">
-              <img class="item_select" src={{software.IMG}} alt="" (click)="Info_Software(software)"><br>
+              <img class="item_select" src={{result.IMG}} alt="" (click)="Info_Software(result)"><br>
             </div>
-            <p>{{software.Name}}</p>
+            <p>{{result.Name}}</p>
           </div>
         </ion-col>
       </ion-row>
