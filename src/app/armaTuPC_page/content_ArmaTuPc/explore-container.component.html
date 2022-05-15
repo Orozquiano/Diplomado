@@ -26,9 +26,9 @@
     <ion-card-content>
       <ion-row>
         <ion-col class="contenedor_SFT" size="4" *ngFor="let result of results">
-          <div id="{{result.id}}" (click)="Info_Software(result)" class="Software activable">
+          <div id={{result.id}} (click)="Info_Software(result)" class="Software activable">
             <div class="contenedor_img">
-              <img class="item_select" src={{result.IMG}} alt="{{result.Name}}"><br>
+              <img class="item_select" src={{result.IMG}} alt={{result.Name}}><br>
             </div>
             <span>{{result.Name}}</span>
             <!-- <span>{{result.id}}</span> -->

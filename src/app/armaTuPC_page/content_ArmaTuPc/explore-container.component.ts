@@ -63,17 +63,30 @@ export class ExploreContainerComponent implements OnInit {
       this.software = res;
       this.IMG = this.software[0].IMG;
       this.Name = this.software[0].Name;
-      this.results = res;
+      this.results = res.sort(this.ByName);
     });
   }
-
+  /**
+   * @param a item de comparación 1
+   * @param b item de comparación 2
+   * @returns sube o baja de posición en el arreglo según el resultado de la comparación
+   */
+  ByName(a,b){
+    if(a.Name < b.Name){
+      return -1;
+    }
+    if(a.Name > b.Name){
+      return 1;
+    }
+    return 0;
+  }
   /**
    * @function Info_Software
    * @param software Le paso toda la información de software
    */
 
   Info_Software(software){
-    console.log("Selecting: ", software.Name);
+    // console.log("Selecting: ", software.Name);
     if(this.Info_Select_Soft.length == 3){
       alert("No puedes seleccionar mas de 3 software");
     }else{
@@ -104,7 +117,7 @@ export class ExploreContainerComponent implements OnInit {
   */
   buscar(event){
     this.textoBuscar = event.detail.value.toLowerCase();
-    this.results = this.software.filter(sft => sft.Name.toLowerCase().includes(this.textoBuscar));
+    this.results = this.software.filter(sft => sft.Name.toLowerCase().includes(this.textoBuscar)).sort(this.ByName);
   }
 
 }
