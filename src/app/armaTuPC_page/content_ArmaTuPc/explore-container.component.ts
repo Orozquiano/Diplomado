@@ -38,7 +38,7 @@ export class ExploreContainerComponent implements OnInit {
     
   ngOnInit() {
     console.log("armatupc OnInit");
-    
+    // window.location.reload();
     this.getItems();
     this.Info_Select_Soft=[];
   }
@@ -50,9 +50,9 @@ export class ExploreContainerComponent implements OnInit {
     if(selected_Software.length==0){
       alert("No puedes armar un pc sin seleccionar al menos 1 software.");
     }else{
-      console.log("Construyendo para:", selected_Software);
       this.busquedaService.Seleccionar(selected_Software);
-      this.navCtrl.navigateForward('/tabs/resultado');
+      console.log("Construyendo para:", this.busquedaService.Obtener_Seleccion());
+      this.navCtrl.navigateRoot(['/tabs/resultado']);
     }
   }
 

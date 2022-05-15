@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
 export class TabsPage {
 
   constructor() {}
-
+  armatupc(){
+    window.location.assign("/tabs/arma_tu_pc");
+  }
 }

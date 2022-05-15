@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { software } from 'src/app/models/interface';
 import { BusquedaService } from 'src/app/service/busqueda.service';
@@ -7,7 +7,7 @@ import { BusquedaService } from 'src/app/service/busqueda.service';
   templateUrl: './explore-container.component.html',
   styleUrls: ['./explore-container.component.scss'],
 })
-export class ExploreContainerComponent implements OnInit, OnDestroy{
+export class ExploreContainerComponent{
   @Input() name: string;
   SoftwareSel: software[]=[];
   SoftwareReq: software;
@@ -15,24 +15,22 @@ export class ExploreContainerComponent implements OnInit, OnDestroy{
   Reqs: string;
   constructor(public busquedaService:BusquedaService, public navCtrl:NavController) {
   }
-  ngOnDestroy(){
-    console.log("OnDestroy");
-  }
-  ionViewDidEnter(){
-    console.log("ionviewDidenter");  
-    this.SoftwareSel=this.busquedaService.Obtener_Seleccion();
-    this.Requisitos_Max();
-  }
   ngOnInit() {
-    console.log("Results OnInit");
+    console.log("OnInit");
     this.SoftwareSel = this.busquedaService.Obtener_Seleccion();
     if(this.SoftwareSel.length == 0){
-      this.navCtrl.pop();
-      this.navCtrl.navigateRoot('/tabs/arma_tu_pc');
+      window.location.assign('/tabs/arma_tu_pc');
     }else{
       console.log("preReq");
       this.Requisitos_Max();
     }
+  }
+  ngOnDestroy(){
+    console.log("OnDestroy");
+  }
+  ngOnChanges(){
+    console.log("OnChanges");
+
   }
 
 /**
