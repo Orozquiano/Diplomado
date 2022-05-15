@@ -11,26 +11,22 @@ export class ExploreContainerComponent{
   @Input() name: string;
   SoftwareSel: software[]=[];
   SoftwareReq: software;
+  CPUReq: string;
+  GPUReq: string;
+  RAMReq: string;
+  StorageReq: string;
   Categories: string[];
-  Reqs: string;
+
   constructor(public busquedaService:BusquedaService, public navCtrl:NavController) {
   }
+
   ngOnInit() {
-    console.log("OnInit");
     this.SoftwareSel = this.busquedaService.Obtener_Seleccion();
     if(this.SoftwareSel.length == 0){
       window.location.assign('/tabs/arma_tu_pc');
     }else{
-      console.log("preReq");
       this.Requisitos_Max();
     }
-  }
-  ngOnDestroy(){
-    console.log("OnDestroy");
-  }
-  ngOnChanges(){
-    console.log("OnChanges");
-
   }
 
 /**
@@ -39,7 +35,6 @@ export class ExploreContainerComponent{
  * @var SoftwareSel es la variable que tiene todos los requisitos de cada software para extraer el valor más alto y así recomendar según el software de mayor exigencia en cada componente
  */
   Requisitos_Max(){
-    console.log("Requiring");
     //inicializar SoftwareRequerido con el primer software para realizar las comparaciones posteriores
     this.SoftwareReq = this.SoftwareSel[0];
     this.Categories=[];
@@ -73,7 +68,9 @@ export class ExploreContainerComponent{
       if(!this.Categories.includes(element.Category))
         this.Categories.push(element.Category);
     });
-    console.log(this.SoftwareReq, this.Categories);
-    this.Reqs = JSON.stringify(this.SoftwareReq);
+    this.CPUReq = JSON.stringify(this.SoftwareReq.CPUReq);
+    this.GPUReq = JSON.stringify(this.SoftwareReq.GPUReq);
+    this.RAMReq = JSON.stringify(this.SoftwareReq.RAM);
+    this.StorageReq = JSON.stringify(this.SoftwareReq.Storage);
   }
 }

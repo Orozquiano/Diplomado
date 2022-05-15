@@ -3,9 +3,6 @@
     <ion-card-content>
       <ion-row>
         <ion-col class="contenedor_SFT" size="4" *ngFor="let software of SoftwareSel" >
-          <div class="contenedor_img">
-            <img class="item_select_1" src="{{software.IMG}}" alt="{{software.Name}}">
-          </div>
           <p>{{software.Name}}</p>
         </ion-col>
       </ion-row>
@@ -19,7 +16,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>CPU</h3>                  
+                  <p>{{CPUReq}}</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -40,7 +38,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>GPU</h3>                  
+                  <p>{{GPUReq}}</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -61,7 +60,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>Unidad de Almacenamiento</h3>                  
+                  <p>{{StorageReq}}</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -82,7 +82,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>RAM</h3>                  
+                  <p>{{RAMReq}}</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -103,7 +104,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>Placa Madre</h3>                  
+                  <p>Placa Madre...</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -124,7 +126,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>Torre</h3>                  
+                  <p>Torre</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
@@ -145,7 +148,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <p>GeForce RTX 3090 ti</p>
+                  <h3>PSU</h3>                  
+                  <p>Fuente de Alimentación</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href="https://www.amazon.com/ref=nav_logo">
