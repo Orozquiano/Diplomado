@@ -73,6 +73,7 @@ export class ExploreContainerComponent implements OnInit {
    */
 
   Info_Software(software){
+    console.log("Selecting: ", software.Name);
     if(this.Info_Select_Soft.length == 3){
       alert("No puedes seleccionar mas de 3 software");
     }else{
@@ -80,6 +81,7 @@ export class ExploreContainerComponent implements OnInit {
         alert("No puedes seleccionar el mismo software");
       }else{
         this.Info_Select_Soft.push(software);
+        document.getElementById(software.id).classList.toggle("activable");
       }
     }
   }
@@ -92,6 +94,7 @@ export class ExploreContainerComponent implements OnInit {
   RemoveS(software_info){
     // let info = software_info.id;
     this.Info_Select_Soft.splice(this.Info_Select_Soft.indexOf(software_info),1);
+    document.getElementById(software_info.id).classList.toggle("activable");
   }
 
   /**
