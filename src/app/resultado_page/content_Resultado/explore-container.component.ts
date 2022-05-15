@@ -12,10 +12,6 @@ export class ExploreContainerComponent {
   @Input() name: string;
   SoftwareSel: software[] = [];
   SoftwareReq: software;
-  CPUReq: string;
-  GPUReq: string;
-  RAMReq: string;
-  StorageReq: string;
   Categories: string[];
 
   //BD items
@@ -39,6 +35,17 @@ export class ExploreContainerComponent {
       this.Requisitos_Max();
     }
   }
+
+  ByGpu(a,b){
+    if(a.Freq < b.Freq){
+      return -1;
+    }
+    if(a.Freq > b.Freq){
+      return 1;
+    }
+    return 0;
+  }
+
   /**
    * @param Comp es el nombre del componente (Ex. 'CPU') que se va a filtrar
    * @param res la lista de componentes (Ex. CPULista[CPU1,CPU2,...]) de la base de datos para realizar el filtro según los requisitos
@@ -49,12 +56,13 @@ export class ExploreContainerComponent {
     console.log(`Requiring ${Comp}`);
     switch (Comp) {
       case 'GPU':
+        res = res.sort(this.ByGpu)
+        console.log("GPU init BD", res);
         this.GPU_BD = res;
         if (this.GPU_BD.length == 0) {
           console.log("No GPUs in DB");
         } else {
-          console.log("Registering ", this.GPU_BD[0].id, " in results");
-          this.GPU_BD = res.filter(GPU => GPU.Dx >= this.SoftwareReq.GPUReq.Dx); //Compare DirectX Versions
+          this.GPU_BD = this.GPU_BD.filter(GPU => GPU.Dx >= this.SoftwareReq.GPUReq.Dx); //Compare DirectX Versions
           if (this.GPU_BD.length == 0) {
             console.log("No GPUs DirectX");
           } else {
@@ -67,6 +75,7 @@ export class ExploreContainerComponent {
                 console.log("No GPUs VRAM");
               } else {
                 console.log("Final GPU ", this.GPU_BD[0].Name);
+                console.log("GPU BD", this.GPU_BD);
               }
             }
           }
@@ -185,9 +194,5 @@ export class ExploreContainerComponent {
       if (!this.Categories.includes(element.Category))
         this.Categories.push(element.Category);
     });
-    this.CPUReq = JSON.stringify(this.SoftwareReq.CPUReq);
-    this.GPUReq = JSON.stringify(this.SoftwareReq.GPUReq);
-    this.RAMReq = JSON.stringify(this.SoftwareReq.RAM);
-    this.StorageReq = JSON.stringify(this.SoftwareReq.Storage);
   }
 }
