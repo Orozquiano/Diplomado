@@ -16,10 +16,10 @@ export class ExploreContainerComponent implements OnInit {
   @Input() name: string;
 
   software: software[]=[];
-  results: software[]=[];
+  results: software[];
   IMG: string;
   Name: string;
-  Info_Select_Soft: string[]=[];
+  Info_Select_Soft: string[];
   textoBuscar = '';
 
   /** 
@@ -37,16 +37,20 @@ export class ExploreContainerComponent implements OnInit {
      */
     
   ngOnInit() {
+    console.log("armatupc OnInit");
+    
     this.getItems();
+    this.Info_Select_Soft=[];
   }
 
   /**
    * @function goToResultado la cual nos permite cambiar a la page de resultado
    */
   goToResultado(selected_Software: software[]){
-    if(selected_Software.length==0)
+    if(selected_Software.length==0){
       alert("No puedes armar un pc sin seleccionar al menos 1 software.");
-    else{
+    }else{
+      console.log("Construyendo para:", selected_Software);
       this.busquedaService.Seleccionar(selected_Software);
       this.navCtrl.navigateForward('/tabs/resultado');
     }
@@ -74,14 +78,13 @@ export class ExploreContainerComponent implements OnInit {
   Info_Software(software){
     if(this.Info_Select_Soft.length == 3){
       alert("No puedes seleccionar mas de 3 software");
-    }else if(this.Info_Select_Soft.includes(software)){
-      alert("No puedes seleccionar el mismos software");
-
     }else{
-      this.Info_Select_Soft.push(software);
+      if(this.Info_Select_Soft.includes(software)){
+        alert("No puedes seleccionar el mismo software");
+      }else{
+        this.Info_Select_Soft.push(software);
+      }
     }
-    
-
   }
 
   /**

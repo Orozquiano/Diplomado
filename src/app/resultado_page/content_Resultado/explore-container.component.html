@@ -1,8 +1,14 @@
 <div id="container">
   <ion-card>
     <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      <ion-row>
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of SoftwareSel" >
+          <div class="contenedor_img">
+            <img class="item_select_1" src="{{software.IMG}}" alt="{{software.Name}}">
+          </div>
+          <p>{{software.Name}}</p>
+        </ion-col>
+      </ion-row>
     </ion-card-content>
   </ion-card>
   <ion-card>

@@ -5,11 +5,12 @@ import { software } from '../models/interface';
   providedIn: 'root'
 })
 export class BusquedaService {
-  private SoftwareSeleccionado = [];
+  public SoftwareSeleccionado = [];
 
   constructor() { }
 
   Seleccionar(Software: software[]){
+    this.SoftwareSeleccionado=[];
     this.SoftwareSeleccionado = Software;
   }
   Obtener_Seleccion(){

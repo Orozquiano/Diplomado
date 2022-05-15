@@ -1,7 +1,3 @@
-/*export interface Item {
-    Name: String
-}*/
-
 export interface Almacenamiento{
     Capacity: number,
     Format: string,
@@ -75,7 +71,7 @@ export interface RAM{
 
 export interface software{
     CPUReq: {
-        Architectura: number,
+        Architecture: number,
         Clock: number,
         Cores: number,
         Threads: number
