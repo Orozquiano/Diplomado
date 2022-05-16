@@ -16,7 +16,7 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>CPU</h3>                  
+                  <h2>Procesador</h2>                  
                   <p>{{CPU_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
@@ -38,7 +38,7 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>GPU</h3>                  
+                  <h2>Tarjeta Gráfica</h2>                  
                   <p>{{GPU_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
@@ -60,7 +60,7 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>Unidad de Almacenamiento</h3>                  
+                  <h2>Unidad de Almacenamiento</h2>                  
                   <p>{{SSD_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
@@ -82,8 +82,8 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>RAM</h3>                  
-                  <p>{{RAM_BD[0].Name}}</p>
+                  <h2>Memoria RAM</h2>                  
+                  <p>{{RAM_BD[0].Name}} ({{RAM_BD[0].Quantity}}x{{RAM_BD[0].Capacity/RAM_BD[0].Quantity}})</p>
                 </ion-col>
                 <div class="contenedor_img">
                   <a href={{RAM_BD[0].Store}}>
@@ -104,11 +104,11 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>Placa Madre</h3>                  
+                  <h2>Placa Madre</h2>                  
                   <p>{{MB_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
-                  <a href={{MB_BD.Store}}>
+                  <a href={{MB_BD[0].Store}}>
                     <img src="../../../assets/icon/Amazon-logo.png" alt="">
                   </a>
                 </div>
@@ -126,7 +126,7 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>Torre</h3>                  
+                  <h2>Torre</h2>                  
                   <p>{{Case_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
@@ -148,7 +148,7 @@
             <ion-col class="contenedor_resultado">
               <div class="texto_componente">
                 <ion-col>
-                  <h3>PSU</h3>                  
+                  <h2>Fuente de Alimentación</h2>                  
                   <p>{{PSU_BD[0].Name}}</p>
                 </ion-col>
                 <div class="contenedor_img">
