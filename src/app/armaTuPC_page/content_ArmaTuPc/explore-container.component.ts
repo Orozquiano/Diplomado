@@ -94,11 +94,11 @@ export class ExploreContainerComponent implements OnInit {
 
   Info_Software(software){
     console.log("Selecting: ", software.Name);
-    if(this.Info_Select_Soft.length == 3){
-      alert("No puedes seleccionar mas de 3 software");
+    if(this.Info_Select_Soft.includes(software)){
+      this.RemoveS(software);
     }else{
-      if(this.Info_Select_Soft.includes(software)){
-        this.RemoveS(software);
+      if(this.Info_Select_Soft.length == 3){
+        alert("No puedes seleccionar mas de 3 software");
       }else{
         this.Info_Select_Soft.push(software);
         document.getElementById(software.id).classList.toggle("activable");
