@@ -22,6 +22,7 @@ export class ExploreContainerComponent {
   Case_BD: Case[] = [];
   MB_BD: TMadre[] = [];
   PSU_BD: FPoder[] = [];
+  BD_General: any[] = [];
 
   constructor(public busquedaService: BusquedaService, public navCtrl: NavController, public bdService: basedatosService) {
   }
@@ -31,8 +32,8 @@ export class ExploreContainerComponent {
     if (this.SoftwareSel.length == 0) {
       window.location.assign('/tabs/arma_tu_pc');
     } else {
-      this.getItems();
       this.Requisitos_Max();
+      this.getItems();
     }
   }
 
@@ -162,7 +163,7 @@ export class ExploreContainerComponent {
           }
         }
         break;
-      case 'CPU':
+      case 'CPU':        
         res = res.sort(this.ByCpu);
         this.CPU_BD = res;
         if (this.CPU_BD.length == 0) {
@@ -172,7 +173,8 @@ export class ExploreContainerComponent {
           if (this.CPU_BD.length == 0) {
             console.log("No CPUs Cores");
           } else {
-            this.CPU_BD = this.CPU_BD.filter(CPU => CPU.Freq <= this.SoftwareReq.CPUReq.Clock && CPU.FreqOC > this.SoftwareReq.CPUReq.Clock); //Compare Frequency of Clock
+            console.log("CPU bfore clock filters ",this.SoftwareReq.CPUReq.Clock, this.CPU_BD);
+            this.CPU_BD = this.CPU_BD.filter(CPU => CPU.FreqOC > this.SoftwareReq.CPUReq.Clock); //Compare Frequency of Clock
             if (this.CPU_BD.length == 0) {
               console.log("No CPUs Clock");
             } else {
@@ -228,7 +230,7 @@ export class ExploreContainerComponent {
               this.RAM_BD = this.RAM_BD.filter(el => el.Quantity >= 2);
             }
           }
-          console.log(this.SoftwareReq.RAM, "req-final Ram-", this.RAM_BD[0]);
+          console.log("final Ram", this.RAM_BD[0].Name);
         }
         break;
       case 'SSD':
@@ -238,12 +240,11 @@ export class ExploreContainerComponent {
           console.log("No SSD in BD");
         } else {
           this.SSD_BD = this.SSD_BD.filter(ssd => ssd.Capacity >= this.SoftwareReq.Storage.Capacity);
-          console.log("Final SSD", this.SSD_BD[0]);
+          console.log("Final SSD", this.SSD_BD[0].Name);
         }
         break;
       case 'MB':
         res = res.sort(this.ByMb);
-        console.log("MBS", res);
         this.MB_BD = res;
         if (this.MB_BD.length == 0) {
           console.log("No MBs in BD");
@@ -254,13 +255,13 @@ export class ExploreContainerComponent {
           }else{
             this.MB_BD = this.MB_BD.filter(p => p.PCIe >= this.GPU_BD[0].PCIe);
             if(this.MB_BD.length == 0){
-              console.log("No MBs with GPUs PCIe");
+              console.log("No MBs with GPUs PCIe",this.GPU_BD[0].PCIe);
             }else{
               this.MB_BD = this.MB_BD.filter(r => r.RamGen == this.RAM_BD[0].RamGen);
               if(this.MB_BD.length == 0){
                 console.log("No MBs with RamGen Match");
               }else{
-                console.log("Final MB", this.MB_BD[0]);
+                console.log("Final MB", this.MB_BD[0].Name);
               }
             }
           }
@@ -292,13 +293,15 @@ export class ExploreContainerComponent {
    * @function Req Realiza la selección y filtro de la lista de componentes según los requisitos
    */
   getItems() {
-    this.bdService.getInfo<Grafica>("Grafica").subscribe(res => { this.Req("GPU", res); });
-    this.bdService.getInfo<Procesador>("Procesador").subscribe(res => { this.Req("CPU", res); });
-    this.bdService.getInfo<RAM>("RAM").subscribe(res => { this.Req("RAM", res); });
-    this.bdService.getInfo<Almacenamiento>("Almacenamiento").subscribe(res => { this.Req("SSD", res); });
-    this.bdService.getInfo<TMadre>("TMadre").subscribe(res => { this.Req("MB", res); });
-    this.bdService.getInfo<Case>("Case").subscribe(res => { this.Req("Case", res); });
-    this.bdService.getInfo<FPoder>("FPorder").subscribe(res => { this.Req("PSU", res); });
+    this.BD_General = this.busquedaService.Obtener_BD();
+    // console.log("Database getting: gpu",this.BD_General[this.BD_General.indexOf("GPU")+1]);
+    this.Req("GPU", this.BD_General[this.BD_General.indexOf("GPU")+1]);
+    this.Req("CPU", this.BD_General[this.BD_General.indexOf("CPU")+1]);
+    this.Req("RAM", this.BD_General[this.BD_General.indexOf("RAM")+1]);
+    this.Req("SSD", this.BD_General[this.BD_General.indexOf("SSD")+1]);
+    this.Req("MB", this.BD_General[this.BD_General.indexOf("MB")+1]);
+    this.Req("Case", this.BD_General[this.BD_General.indexOf("Case")+1]);
+    this.Req("PSU", this.BD_General[this.BD_General.indexOf("PSU")+1]);
   }
   /**
    * @function Requisitos_Max es una función que permite calcular los requisitos máximos entre los software a utilizar
@@ -339,5 +342,7 @@ export class ExploreContainerComponent {
       if (!this.Categories.includes(element.Category))
         this.Categories.push(element.Category);
     });
+
+    this.SoftwareReq.GPUReq.VRAM+=2;
   }
 }

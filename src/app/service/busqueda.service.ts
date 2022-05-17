@@ -6,14 +6,18 @@ import { software } from '../models/interface';
 })
 export class BusquedaService {
   public SoftwareSeleccionado = [];
-
+  public BD = [];
   constructor() { }
 
-  Seleccionar(Software: software[]){
+  Seleccionar(Software: software[], db: any[]){
     this.SoftwareSeleccionado=[];
     this.SoftwareSeleccionado = Software;
+    this.BD = db;
   }
   Obtener_Seleccion(){
     return this.SoftwareSeleccionado;
+  }
+  Obtener_BD(){
+    return this.BD;
   }
 }
