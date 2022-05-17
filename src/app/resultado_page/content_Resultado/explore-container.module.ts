@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ExploreContainerComponent } from './explore-container.component';
-import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule, PipesModule],
+  imports: [ CommonModule, FormsModule, IonicModule],
   declarations: [ExploreContainerComponent],
   exports: [ExploreContainerComponent]
 })

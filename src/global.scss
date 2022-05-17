@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,13 +25,72 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.logo{
-    width: 240px;
-    height: auto;
-    margin-right: 20px;
+.logo {
+  width: 240px;
+  height: auto;
+  margin-right: 20px;
 }
-ion-card{
-    ion-card-title{
-        margin-top: 10px;
+#container {
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  ion-card {
+    padding-top: 10px;
+    ion-card-title {
+      margin-top: 10px;
     }
+    .contenedor_SFT {
+        .contenedor_img {
+            transform: scale(1);
+            height: 12vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            transition: all 0.2s ease-in;
+            cursor:pointer;
+            img {
+                height:100%;
+                width:auto;
+            }
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        .Software{
+            background-color: rgb(4, 4, 4);
+            cursor: pointer;
+            height: 20vh;
+            overflow: hidden;
+            position: relative;
+            .contenedor_img {
+                transform: scale(1);
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                img {
+                    height:100%;
+                    width:auto;
+                }
+            }
+            span{
+                position: absolute;
+                top: 1%;
+                left: 2%;
+            }
+        }
+        .activable {
+            background-color: rgb(55, 55, 55);
+            transition: all ease-in-out 0.2s;
+            transform: scale(1);
+            opacity: 0.8;
+            &:hover {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+        
+    }
+  }
 }

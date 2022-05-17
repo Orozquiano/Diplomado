@@ -1,0 +1,173 @@
+<div id="container">
+  <ion-card>
+    <ion-card-content>
+      <ion-row>
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software of SoftwareSel" >
+          <p>{{software.Name}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Procesador</h2>                  
+                  <p>{{CPU_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{CPU_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{CPU_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Tarjeta Gráfica</h2>                  
+                  <p>{{GPU_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{GPU_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{GPU_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Unidad de Almacenamiento</h2>                  
+                  <p>{{SSD_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{SSD_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{SSD_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Memoria RAM</h2>                  
+                  <p>{{RAM_BD[0].Name}} ({{RAM_BD[0].Quantity}}x{{RAM_BD[0].Capacity/RAM_BD[0].Quantity}})</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{RAM_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{RAM_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Placa Madre</h2>                  
+                  <p>{{MB_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{MB_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{MB_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Torre</h2>                  
+                  <p>{{Case_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{Case_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{Case_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="contenedor_resultado">
+              <div class="texto_componente">
+                <ion-col>
+                  <h2>Fuente de Alimentación</h2>                  
+                  <p>{{PSU_BD[0].Name}}</p>
+                </ion-col>
+                <div class="contenedor_img">
+                  <a href={{PSU_BD[0].Store}}>
+                    <img src="../../../assets/icon/Amazon-logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <img src={{PSU_BD[0].IMG}} alt="">
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>

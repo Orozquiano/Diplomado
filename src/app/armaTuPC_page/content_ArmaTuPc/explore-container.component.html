@@ -1,83 +1,48 @@
 <div id="container">
   <ion-card>
     <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      Componapps es una plataforma web la cual te recomendará una serie de componentes para el computador que necesitas, para saber qué tipo de componentes necesitas, debes escoger un máximo de 3 software que utilices en el día a día o tengas planeado usar en tu nuevo computador.
     </ion-card-content>
   </ion-card>
   <ion-card>
     <ion-card-title>Software seleccionado</ion-card-title>
     <ion-card-content>
       <ion-row>
-        <ion-col>
-          <img class="item_select_1" src="../../../assets/icon/componapps_icon.png" alt="">
-        </ion-col>
-        <ion-col>
-          <img class="item_select_2"src="../../../assets/icon/componapps_icon.png" alt="">
-        </ion-col>
-        <ion-col>
-          <img class="item_select_3" src="../../../assets/icon/componapps_icon.png" alt="">
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let software_info of Info_Select_Soft" >
+          <div class="contenedor_img">
+            <img class="item_select_1" src="{{software_info.IMG}}" alt="{{software_info.Name}}" (click)="RemoveS(software_info)">
+          </div>
+          <p>{{software_info.Name}}</p>
         </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
-  <ion-searchbar></ion-searchbar>
+  <ion-searchbar animated (ionChange)="buscar($event)"></ion-searchbar>
+  <ion-button (click)="goToResultado(Info_Select_Soft)">Buscar PC</ion-button>
   <ion-card>
     <ion-card-title>Software</ion-card-title>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content>
-        <ion-card-content>
-          <ion-row>
-            <ion-col>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              
-            </ion-col>
-            <ion-col>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-            </ion-col>
-            <ion-col>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-              <div>
-                <img class="item_select" src="../../../assets/icon/componapps_icon.png" alt=""><br>
-                <p>Nombre Software</p>
-              </div>
-            </ion-col>
-          </ion-row>
-        </ion-card-content>
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-      
+    <!-- <ion-infinite-scroll >
+      <ion-infinite-scroll-content> -->
+    <ion-card-content>
+      <ion-row>
+        <ion-col class="contenedor_SFT" size="4" *ngFor="let result of results">
+          <div id={{result.id}} (click)="Info_Software(result)" class="Software activable">
+            <div class="contenedor_img">
+              <img class="item_select" src={{result.IMG}} alt={{result.Name}}><br>
+            </div>
+            <span>{{result.Name}}</span>
+            <!-- <span>{{result.id}}</span> -->
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <!-- </ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
   </ion-card>
-  <!-- <strong>{{ name }}</strong>
-  <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components 232</a></p>
-  <h1>Cambie el contenido de la page</h1> -->
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
