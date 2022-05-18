@@ -44,14 +44,14 @@
         .contenedor_img {
             transform: scale(1);
             height: 12vh;
-            width: 100%;
+            width: auto;
             display: flex;
             justify-content: center;
             transition: all 0.2s ease-in;
             cursor:pointer;
-            img {
-                height:100%;
-                width:auto;
+            img{
+                height: fit-content;
+                max-height: 100%;
             }
             &:hover{
                 transform: scale(1.1);
@@ -61,23 +61,31 @@
             background-color: rgb(4, 4, 4);
             cursor: pointer;
             height: 20vh;
+            width: auto;
             overflow: hidden;
             position: relative;
+            opacity: 0.6;
+            overflow: visible;
             .contenedor_img {
                 transform: scale(1);
                 height: 100%;
-                width: 100%;
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 img {
-                    height:100%;
-                    width:auto;
+                    height: fit-content;
+                    max-height: 100%;
+                    transition: all 0.2s ease-in-out;
                 }
+
             }
             span{
                 position: absolute;
                 top: 1%;
                 left: 2%;
+                background-color: rgba(0,0,0,0.4);
+                padding:5px ;
+                // font-weight: bold;
             }
         }
         .activable {
@@ -87,7 +95,13 @@
             opacity: 0.8;
             &:hover {
                 opacity: 1;
-                transform: scale(1.1);
+                img{
+                    transform: scale(1.25);
+                }
+                span{
+                    transform: translate(0,-100%);
+                    background-color: rgba(0,0,0,0.8);
+                }
             }
         }
         
