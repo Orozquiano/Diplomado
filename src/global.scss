@@ -26,21 +26,31 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 :root {
+    //colors
   --dark-full: rgb(26, 26, 26);
   --light-full: rgb(192, 192, 192);
+  --light-opacity: rgba(192, 192, 192, 0.2);
+  --background: var(--dark-full);
+  --transparent: rgba(0,0,0,0);
+
+    //fontsize
+  --sm: 8px;
+  --md: 16px;
+  --lg: 32px;
 }
 * {
-  background-color: var(--dark-full);
+  background: var(--dark-full);
+  color: var(--light-full);
+}
+ion-toolbar{
+  --background: var(--dark-full) !important;
   color: var(--light-full);
 }
 .logo {
   width: 240px;
   height: auto;
   margin-right: 20px;
-}
-.hydrated .ion-page .content-ltr .header-collapse-condense .toolbar-title-large{
-    background-color: var(--dark-full) !important;
-    color: var(--light-full) !important;
+  background-color: var(--transparent);
 }
 #container {
   text-align: center;
@@ -115,6 +125,11 @@
           }
         }
       }
+    }
+  }
+  ion-searchbar{
+    input{
+      --background: var(--dark-full);
     }
   }
 }

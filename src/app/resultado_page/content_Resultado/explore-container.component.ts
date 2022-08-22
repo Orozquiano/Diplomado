@@ -358,7 +358,5 @@ export class ExploreContainerComponent {
       if (!this.Categories.includes(element.Category))
         this.Categories.push(element.Category);
     });
-
-    // this.SoftwareReq.GPUReq.VRAM += 2;
   }
 }
