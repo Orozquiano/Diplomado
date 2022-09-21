@@ -139,7 +139,7 @@ export class ExploreContainerComponent {
    */
   Req(Comp, res) {
     //Filtros anidados...
-    console.log(`Requiring ${Comp}`);
+    // console.log(`Requiring ${Comp}`);
     switch (Comp) {
       case 'GPU':
         res = res.sort(this.ByGpu)
@@ -155,22 +155,22 @@ export class ExploreContainerComponent {
               if (this.GPU_BD.filter(GPU => GPU.VRAM >= this.SoftwareReq.GPUReq.VRAM).length > 0) {
                 this.GPU_BD = this.GPU_BD.filter(GPU => GPU.VRAM >= this.SoftwareReq.GPUReq.VRAM+2); //Compare VRAM Versions
               } else {
-                console.log("No GPUs VRAM");
+                // console.log("No GPUs VRAM");
               }
             } else {
-              console.log("No GPUs OpenGL");
+              // console.log("No GPUs OpenGL");
             }
           } else {
-            console.log("No GPUs DirectX");
+            // console.log("No GPUs DirectX");
           }
         }
-        console.log("Final GPU ", this.GPU_BD[0].Name);
+        // console.log("Final GPU ", this.GPU_BD[0].Name);
         break;
       case 'CPU':
         res = res.sort(this.ByCpu);
         this.CPU_BD = res;
         if (this.CPU_BD.length == 0) {
-          console.log("No CPUs in DB");
+          // console.log("No CPUs in DB");
           alert(`Lo sentimos, en este momento no pudimos generar una recomendación de ${Comp} por falta de stock`);
         } else {
           if (this.CPU_BD.filter(CPU => CPU.Cores >= this.SoftwareReq.CPUReq.Cores).length > 0) {
@@ -184,39 +184,39 @@ export class ExploreContainerComponent {
                     //si graficos integrados y cumplen requisitos, no need GPUy VRAM needed push into softwareRam needed
                     if (this.CPU_BD[0].OGL >= this.SoftwareReq.GPUReq.OGL) {
                       if (this.SoftwareReq.GPUReq.VRAM <= 2) {
-                        console.log("CPU can run the app!, no Needs GPU");
+                        // console.log("CPU can run the app!, no Needs GPU");
                         this.SoftwareReq.RAM += this.SoftwareReq.GPUReq.VRAM;
                         this.GPU_BD[0].Name = "Tu CPU tiene Gráficos integrados, no necesitas comprar una tarjeta gráfica";
                         this.GPU_BD[0].IMG = "https://www.profesionalreview.com/wp-content/uploads/2020/10/igpu-4.jpg";
                         this.GPU_BD[0].Store = this.CPU_BD[0].Store;
                         this.GPU_BD[0].PCIe = this.CPU_BD[0].PCIe;
-                        console.log("PCIe GP CP",this.GPU_BD[0].PCIe, this.CPU_BD[0].PCIe);
+                        // console.log("PCIe GP CP",this.GPU_BD[0].PCIe, this.CPU_BD[0].PCIe);
                       } else {
                         this.CPU_BD = this.CPU_BD.filter(CPU => CPU.PCIe >= this.GPU_BD[0].PCIe);
                         if (this.CPU_BD.length == 0) {
-                          console.log("No CPU-GPU PCIe match");
+                          // console.log("No CPU-GPU PCIe match");
                         }
                       }
                     } else {
-                      console.log("No iGPUs OpenGL, need gpu");
+                      // console.log("No iGPUs OpenGL, need gpu");
                     }
                   } else {
-                    console.log("No iGPUs DirectX, need gpu");
+                    // console.log("No iGPUs DirectX, need gpu");
                   }
                 }else{
-                  console.log("not iGPU in CPU");
+                  // console.log("not iGPU in CPU");
                 }
               } else {
-                console.log("No CPU Threads");
+                // console.log("No CPU Threads");
               }
             } else {
-              console.log("No CPUs Clock");
+              // console.log("No CPUs Clock");
             }
           } else {
-            console.log("No CPUs Cores");
+            // console.log("No CPUs Cores");
           }
         }
-        console.log("Final CPU ", this.CPU_BD[0].Name);
+        // console.log("Final CPU ", this.CPU_BD[0].Name);
         break;
       case 'RAM':
         res = res.sort(this.ByRam);
@@ -227,7 +227,7 @@ export class ExploreContainerComponent {
           this.RAM_BD = res.filter(rgen => rgen.RamGen == "DDR4");
         }
         if (this.RAM_BD.length == 0) {
-          console.log("No Rams in BD");
+          // console.log("No Rams in BD");
         } else {
           this.RAM_BD = this.RAM_BD.filter(fil => fil.Capacity >= this.SoftwareReq.RAM);
           if (this.RAM_BD[0].Capacity < this.SoftwareReq.RAM) {
@@ -235,39 +235,39 @@ export class ExploreContainerComponent {
               this.RAM_BD = this.RAM_BD.filter(el => el.Quantity >= 2);
             }
           }
-          console.log("final Ram", this.RAM_BD[0].Name);
+          // console.log("final Ram", this.RAM_BD[0].Name);
         }
         break;
       case 'SSD':
         res = res.sort(this.BySSD);
         this.SSD_BD = res;
         if (this.SSD_BD.length == 0) {
-          console.log("No SSD in BD");
+          // console.log("No SSD in BD");
         } else {
           this.SSD_BD = this.SSD_BD.filter(ssd => ssd.Capacity >= this.SoftwareReq.Storage.Capacity);
-          console.log("Final SSD", this.SSD_BD[0].Name);
+          // console.log("Final SSD", this.SSD_BD[0].Name);
         }
         break;
       case 'MB':
         res = res.sort(this.ByMb);
         this.MB_BD = res;
         if (this.MB_BD.length == 0) {
-          console.log("No MBs in BD");
+          // console.log("No MBs in BD");
           alert(`Lo sentimos, en este momento no pudimos generar una recomendación de ${Comp} por falta de stock`);
         } else {
           this.MB_BD = this.MB_BD.filter(mb => mb.Socket == this.CPU_BD[0].Socket);
           if (this.MB_BD.length == 0) {
-            console.log("No MBs with Socket");
+            // console.log("No MBs with Socket");
           } else {
             this.MB_BD = this.MB_BD.filter(p => p.PCIe >= this.GPU_BD[0].PCIe);
             if (this.MB_BD.length == 0) {
-              console.log("No MBs with GPUs PCIe", this.GPU_BD[0].PCIe);
+              // console.log("No MBs with GPUs PCIe", this.GPU_BD[0].PCIe);
             } else {
               this.MB_BD = this.MB_BD.filter(r => r.RamGen == this.RAM_BD[0].RamGen);
               if (this.MB_BD.length == 0) {
-                console.log("No MBs with RamGen Match");
+                // console.log("No MBs with RamGen Match");
               } else {
-                console.log("Final MB", this.MB_BD[0].Name);
+                // console.log("Final MB", this.MB_BD[0].Name);
               }
             }
           }
@@ -277,17 +277,17 @@ export class ExploreContainerComponent {
         res = res.sort(this.ByCase);
         this.Case_BD = res;
         if (this.Case_BD.length == 0) {
-          console.log("No Cases in BD");
+          // console.log("No Cases in BD");
         } else {
           this.Case_BD = this.Case_BD.filter(cs => cs.MBFormat.includes(this.MB_BD[0].Size));
-          console.log("final Case", this.Case_BD[0].Name);
+          // console.log("final Case", this.Case_BD[0].Name);
         }
         break;
       case 'PSU':
         res = res.sort(this.ByPSU);
         this.PSU_BD = res;
         if (this.PSU_BD.length == 0) {
-          console.log("No PSUs in BD");
+          // console.log("No PSUs in BD");
           alert(`Lo sentimos, en este momento no pudimos generar una recomendación de ${Comp} por falta de stock`);
         } else {
          this.PSU_Req = 100 + //CPU100
@@ -298,7 +298,7 @@ export class ExploreContainerComponent {
          50 + //MB50
          this.GPU_BD[0].TDP;
           this.PSU_BD = this.PSU_BD.filter(ps => 0.8*ps.Power > this.PSU_Req+100);
-          console.log("Final PSU",this.PSU_Req, this.PSU_BD[0].Name);
+          // console.log("Final PSU",this.PSU_Req, this.PSU_BD[0].Name);
         }
         break;
     }
