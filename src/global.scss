@@ -25,10 +25,32 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+:root {
+    //colors
+  --dark-full: rgb(26, 26, 26);
+  --light-full: rgb(192, 192, 192);
+  --light-opacity: rgba(192, 192, 192, 0.2);
+  --background: var(--dark-full);
+  --transparent: rgba(0,0,0,0);
+
+    //fontsize
+  --sm: 8px;
+  --md: 16px;
+  --lg: 32px;
+}
+* {
+  background: var(--dark-full);
+  color: var(--light-full);
+}
+ion-toolbar{
+  --background: var(--dark-full) !important;
+  color: var(--light-full);
+}
 .logo {
   width: 240px;
   height: auto;
   margin-right: 20px;
+  background-color: var(--transparent);
 }
 #container {
   text-align: center;
@@ -41,70 +63,73 @@
       margin-top: 10px;
     }
     .contenedor_SFT {
+      .contenedor_img {
+        transform: scale(1);
+        height: 12vh;
+        width: auto;
+        display: flex;
+        justify-content: center;
+        transition: all 0.2s ease-in;
+        cursor: pointer;
+        img {
+          height: fit-content;
+          max-height: 100%;
+        }
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .Software {
+        background-color: rgb(4, 4, 4);
+        cursor: pointer;
+        height: 20vh;
+        width: auto;
+        overflow: hidden;
+        position: relative;
+        opacity: 0.6;
+        overflow: visible;
         .contenedor_img {
-            transform: scale(1);
-            height: 12vh;
-            width: auto;
-            display: flex;
-            justify-content: center;
-            transition: all 0.2s ease-in;
-            cursor:pointer;
-            img{
-                height: fit-content;
-                max-height: 100%;
-            }
-            &:hover{
-                transform: scale(1.1);
-            }
+          transform: scale(1);
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            height: fit-content;
+            max-height: 100%;
+            transition: all 0.2s ease-in-out;
+          }
         }
-        .Software{
-            background-color: rgb(4, 4, 4);
-            cursor: pointer;
-            height: 20vh;
-            width: auto;
-            overflow: hidden;
-            position: relative;
-            opacity: 0.6;
-            overflow: visible;
-            .contenedor_img {
-                transform: scale(1);
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                img {
-                    height: fit-content;
-                    max-height: 100%;
-                    transition: all 0.2s ease-in-out;
-                }
-
-            }
-            span{
-                position: absolute;
-                top: 1%;
-                left: 2%;
-                background-color: rgba(0,0,0,0.4);
-                padding:5px ;
-                // font-weight: bold;
-            }
+        span {
+          position: absolute;
+          top: 1%;
+          left: 2%;
+          background-color: rgba(0, 0, 0, 0.4);
+          padding: 5px;
+          // font-weight: bold;
         }
-        .activable {
-            background-color: rgb(55, 55, 55);
-            transition: all ease-in-out 0.2s;
-            transform: scale(1);
-            opacity: 0.8;
-            &:hover {
-                opacity: 1;
-                img{
-                    transform: scale(1.25);
-                }
-                span{
-                    transform: translate(0,-100%);
-                    background-color: rgba(0,0,0,0.8);
-                }
-            }
+      }
+      .activable {
+        background-color: rgb(55, 55, 55);
+        transition: all ease-in-out 0.2s;
+        transform: scale(1);
+        opacity: 0.8;
+        &:hover {
+          opacity: 1;
+          img {
+            transform: scale(1.25);
+          }
+          span {
+            transform: translate(0, -100%);
+            background-color: rgba(0, 0, 0, 0.8);
+          }
         }
-        
+      }
+    }
+  }
+  ion-searchbar{
+    input{
+      --background: var(--dark-full);
     }
   }
 }

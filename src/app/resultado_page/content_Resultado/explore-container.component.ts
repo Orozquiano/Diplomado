@@ -153,7 +153,7 @@ export class ExploreContainerComponent {
             if (this.GPU_BD.filter(GPU => GPU.OGL >= this.SoftwareReq.GPUReq.OGL).length > 0) {
               this.GPU_BD = this.GPU_BD.filter(GPU => GPU.OGL >= this.SoftwareReq.GPUReq.OGL); //Compare OGL Versions
               if (this.GPU_BD.filter(GPU => GPU.VRAM >= this.SoftwareReq.GPUReq.VRAM).length > 0) {
-                this.GPU_BD = this.GPU_BD.filter(GPU => GPU.VRAM >= this.SoftwareReq.GPUReq.VRAM); //Compare VRAM Versions
+                this.GPU_BD = this.GPU_BD.filter(GPU => GPU.VRAM >= this.SoftwareReq.GPUReq.VRAM+2); //Compare VRAM Versions
               } else {
                 console.log("No GPUs VRAM");
               }
@@ -358,7 +358,5 @@ export class ExploreContainerComponent {
       if (!this.Categories.includes(element.Category))
         this.Categories.push(element.Category);
     });
-
-    this.SoftwareReq.GPUReq.VRAM += 2;
   }
 }
